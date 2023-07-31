@@ -56,16 +56,10 @@ function loadMovieDetails(){
             // console.log(movie.dataset.id);
             searchList.classList.add('hide-search-list');
             movieSearchBox.value = "";
-            try {
-                const result = await fetch(`https://www.omdbapi.com/?i=${movie.dataset.id}&apikey=fc1fef96`);
-                if (!result.ok) {
-                  throw new Error('Network response was not ok');
-                }
-                const movieDetails = await result.json();
-                displayMovieDetails(movieDetails);
-              } catch (error) {
-                console.error('Error fetching data:', error);
-              }
+            const result = await fetch(`https://www.omdbapi.com/?i=${movie.dataset.id}&apikey=fc1fef96`);
+            const movieDetails = await result.json();
+            // console.log(movieDetails);
+            displayMovieDetails(movieDetails);
         });
     });
 }
