@@ -11,7 +11,7 @@ async function loadMovies(searchTerm){
     const res = await fetch(`${URL}`);
     const data = await res.json();
     // console.log(data.Search);
-    if(data.Response == "true") displayMovieList(data.Search);
+    if(data.Response == "True") displayMovieList(data.Search);
 }
 
 function findMovies(){
@@ -49,10 +49,10 @@ function displayMovieList(movies){
     loadMovieDetails();
 }
 
-function loadMovieDetails(){
+async function loadMovieDetails(){
     const searchListMovies = searchList.querySelectorAll('.search-list-item');
     searchListMovies.forEach(movie => {
-        movie.addEventListener('click', async() => {
+        movie.addEventListener('click', async () => {
             // console.log(movie.dataset.id);
             searchList.classList.add('hide-search-list');
             movieSearchBox.value = "";
