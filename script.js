@@ -1,5 +1,5 @@
 // Titles: https://omdbapi.com/?s=thor&page=1&apikey=fc1fef96
-// details: http://www.omdbapi.com/?i=tt3896198&apikey=fc1fef96
+// details: https://www.omdbapi.com/?i=tt3896198&apikey=fc1fef96
 
 const movieSearchBox = document.getElementById('movie-search-box');
 const searchList = document.getElementById('search-list');
@@ -13,7 +13,7 @@ async function loadMovies(searchTerm){
     // console.log(data.Search);
     if(data.Response == "True") displayMovieList(data.Search);
 }
-
+// find movie in API
 function findMovies(){
     let searchTerm = (movieSearchBox.value).trim();
     if(searchTerm.length > 0){
@@ -23,7 +23,7 @@ function findMovies(){
         searchList.classList.add('hide-search-list');
     }
 }
-
+// to display searched movie lists
 function displayMovieList(movies){
     searchList.innerHTML = "";
     for(let idx = 0; idx < movies.length; idx++){
@@ -48,7 +48,7 @@ function displayMovieList(movies){
     }
     loadMovieDetails();
 }
-
+//Add movie details to the local storage
 async function loadMovieDetails(){
     const searchListMovies = searchList.querySelectorAll('.search-list-item');
     searchListMovies.forEach(movie => {
@@ -63,7 +63,7 @@ async function loadMovieDetails(){
         });
     });
 }
-
+//display on the browser
 function displayMovieDetails(details){
     resultGrid.innerHTML = `
     <div class = "movie-poster">
@@ -86,7 +86,7 @@ function displayMovieDetails(details){
     `;
 }
 
-
+// User type the movie-Name to search-movie
 window.addEventListener('click', (event) => {
     if(event.target.className != "form-control"){
         searchList.classList.add('hide-search-list');
